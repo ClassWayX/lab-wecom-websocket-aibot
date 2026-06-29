@@ -16,6 +16,12 @@
 
 [点击跳转 `https://github.com/WecomTeam/aibot-node-sdk`](https://github.com/WecomTeam/aibot-node-sdk)
 
+### npm 官方 Github 仓库克隆下来的本地地址
+
+> 注意，该地址已被 `.gitignore` 忽略
+
+[点击跳转](/repo-aibot-node-sdk/)
+
 # 🛠️ 快速开始
 
 ## 1. 环境准备
