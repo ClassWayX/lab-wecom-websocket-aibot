@@ -1,0 +1,13 @@
+services:
+  app:
+    build:
+      context: .
+      target: dev
+    image: lab-wecom-websocket-aibot:dev
+    container_name: lab-wecom-websocket-aibot-dev-container
+    ports:
+      - "3000:3000"
+    restart: no
+    volumes:
+      - .:/app
+      - /app/node_modules
