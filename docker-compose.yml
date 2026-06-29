@@ -5,6 +5,8 @@ services:
       target: dev
     image: lab-wecom-websocket-aibot:dev
     container_name: lab-wecom-websocket-aibot-dev-container
+    env_file:
+      - .env
     ports:
       - "3000:3000"
     restart: no
