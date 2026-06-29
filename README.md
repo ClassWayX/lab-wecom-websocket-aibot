@@ -6,9 +6,17 @@
 
 [点击跳转企业微信官方文档](https://developer.work.weixin.qq.com/document/path/101463)
 
-## npm 文档
+[点击跳转以上链接的本地文件](/docs/智能机器人长连接.md)。注意，该文件非常非常大，请注意上下文管理。
+
+## npm
+
+### npm 首页
 
 [点击跳转 `@wecom/aibot-node-sdk` 的 npm 网页链接](https://www.npmjs.com/package/@wecom/aibot-node-sdk)
+
+### npm 官方 Github 仓库
+
+[点击跳转 `https://github.com/WecomTeam/aibot-node-sdk`](https://github.com/WecomTeam/aibot-node-sdk)
 
 # 🛠️ 快速开始
 
