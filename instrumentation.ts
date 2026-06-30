@@ -1,28 +1,17 @@
 // instrumentation.ts
 
-import AiBot from '@wecom/aibot-node-sdk';
 import type { WsFrame } from '@wecom/aibot-node-sdk';
 import { generateReqId } from '@wecom/aibot-node-sdk';
 import generateButtonInteraction from "@/libs/template-cards-gen/button-interaction-gen";
 import generateFullStructureCard from "@/libs/template-cards-gen/full-structure-gen";
+import {wsClientManager} from "@/libs/ws-client";
 
 export async function register() {
   if (process.env.NEXT_RUNTIME === 'nodejs') {
-    const botId = process.env.WECOM_BOT_ID;
-    const secret = process.env.WECOM_BOT_SECRET;
     console.log("code v1")
-
-    if (!botId || !secret) {
-      console.error('❌ 未配置 WECOM_BOT_ID 或 WECOM_BOT_SECRET 环境变量');
-      return;
-    }
-
     console.log('🚀 正在连接企业微信机器人...');
 
-    const wsClient = new AiBot.WSClient({
-      botId,
-      secret,
-    });
+    const wsClient = wsClientManager.getClient();
 
     wsClient.connect();
 
