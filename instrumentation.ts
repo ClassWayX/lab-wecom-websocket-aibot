@@ -3,11 +3,14 @@
 import AiBot from '@wecom/aibot-node-sdk';
 import type { WsFrame } from '@wecom/aibot-node-sdk';
 import { generateReqId } from '@wecom/aibot-node-sdk';
+import generateButtonInteraction from "@/libs/template-cards-gen/button-interaction-gen";
+import generateFullStructureCard from "@/libs/template-cards-gen/full-structure-gen";
 
 export async function register() {
   if (process.env.NEXT_RUNTIME === 'nodejs') {
     const botId = process.env.WECOM_BOT_ID;
     const secret = process.env.WECOM_BOT_SECRET;
+    console.log("code v1")
 
     if (!botId || !secret) {
       console.error('❌ 未配置 WECOM_BOT_ID 或 WECOM_BOT_SECRET 环境变量');
@@ -58,24 +61,11 @@ export async function register() {
             if (content.includes('卡片') || content.includes('操作')) {
                 const taskId = `task_${Date.now()}`;
                 console.log(`🆔 使用 task_id: ${taskId}`);
-                
-                const replyResult = await wsClient.replyTemplateCard(frame, {
-                    card_type: 'button_interaction',
-                    main_title: {
-                        title: '可操作卡片示例',
-                        desc: '这是一个带有交互按钮的卡片，请选择您需要的操作',
-                    },
-                    button_list: [
-                        { text: '确认', key: 'btn_confirm', style: 1 },
-                        { text: '取消', key: 'btn_cancel', style: 2 },
-                        { text: '详情', key: 'btn_detail', style: 3 },
-                    ],
-                    card_action: {
-                        type: 0
-                    },
-                    task_id: taskId,
-                });
+                const replyResult = await wsClient.replyTemplateCard(frame, generateButtonInteraction())
                 console.log('✅ 卡片回复成功，响应:', JSON.stringify(replyResult, null, 2));
+            } else if (content.includes("全部")) {
+                const replyResult = await wsClient.replyTemplateCard(frame, generateFullStructureCard())
+                console.log('✅ 卡片回复成功，:', JSON.stringify(replyResult, null, 2));
             } else {
                 // 否则正常回复
                 const streamId = generateReqId('stream');
