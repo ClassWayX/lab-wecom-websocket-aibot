@@ -20,7 +20,7 @@
 
 > 注意，该地址已被 `.gitignore` 忽略
 
-[点击跳转](/repo-aibot-node-sdk/)
+[点击跳转](/.repo-aibot-node-sdk/)
 
 # 🛠️ 快速开始
 
